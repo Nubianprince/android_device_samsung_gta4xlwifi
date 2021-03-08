@@ -1,0 +1,14 @@
+### TWRP
+TW_INCLUDE_CRYPTO := false
+TW_NO_REBOOT_BOOTLOADER := true
+TW_HAS_DOWNLOAD_MODE := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_NO_LEGACY_PROPS := true
+TW_NO_HAPTICS := true
+
+THEME_NAME := fichls
+TW_CUSTOM_THEME := $(DEVICE_PATH)/recovery/$(THEME_NAME)
+TW_DEVICE_VERSION := 1_nubianprince
+
+# init.recovery.usb.rc
+TW_EXCLUDE_DEFAULT_USB_INIT := true
