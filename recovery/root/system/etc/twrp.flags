@@ -1,0 +1,33 @@
+# mount point	fstype		device			device2				flags
+# Logical partitions
+system		/system		ext4							wait,logical,first_stage_mount
+vendor		/vendor		ext4							wait,logical,first_stage_mount
+product		/product	ext4							wait,logical,first_stage_mount
+odm		/odm		ext4							wait,logical,first_stage_mount
+
+# Symlinked partitions
+/system_image	emmc		/dev/block/bootdevice/by-name/system			flags=backup=0;flashimg;display="System Image"
+/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor			flags=backup=0;flashimg;display="Vendor Image"
+/product_image	emmc		/dev/block/bootdevice/by-name/product			flags=backup=0;flashimg;display="Product Image"
+/odm_image	emmc		/dev/block/bootdevice/by-name/odm			flags=backup=0;flashimg;display="Odm Image"
+
+# Physical partitions
+/metadata	ext4		/dev/block/platform/13520000.ufs/by-name/metadata	flags=backup=1;display="Metadata"
+/boot		emmc		/dev/block/platform/13520000.ufs/by-name/boot		flags=backup=1;flashimg;display="Boot"
+/recovery	emmc		/dev/block/platform/13520000.ufs/by-name/recovery	flags=backup=1;flashimg;display="Recovery"
+/data		f2fs		/dev/block/platform/13520000.ufs/by-name/userdata
+/cache		ext4		/dev/block/platform/13520000.ufs/by-name/cache		flags=backup=1;display="Cache"
+/efs		emmc		/dev/block/platform/13520000.ufs/by-name/efs		flags=backup=1;display="EFS"
+/sec_efs	emmc		/dev/block/platform/13520000.ufs/by-name/sec_efs	flags=backup=1;display="Sec EFS"
+/modem		emmc		/dev/block/platform/13520000.ufs/by-name/radio		flags=backup=1;display="Modem"
+/misc		emmc		/dev/block/platform/13520000.ufs/by-name/misc
+/dtbo		emmc		/dev/block/platform/13520000.ufs/by-name/dtbo		flags=backup=1;flashimg;display="Dtbo"
+/optics_image	emmc		/dev/block/platform/13520000.ufs/by-name/optics		flags=backup=1;flashimg;display="Optics Image"
+/prism_image	emmc		/dev/block/platform/13520000.ufs/by-name/prism		flags=backup=1;flashimg;display="Prism Image"
+/vbmeta_samsung	emmc		/dev/block/platform/13520000.ufs/by-name/vbmeta_samsung
+/vbmeta_system	emmc		/dev/block/platform/13520000.ufs/by-name/vbmeta_system
+/vendor_boot	emmc		/dev/block/platform/13520000.ufs/by-name/vendor_boot	flags=backup=1;flashimg;display="Vendor Boot"
+
+# Removable storage
+/external_sd	vfat		/dev/block/mmcblk0p1	/dev/block/mmcblk0		flags=storage;wipeingui;removable
+/usb-otg	auto		/dev/block/sdf1	/dev/block/sdf				flags=display="USB-OTG";storage;wipeingui;removable
