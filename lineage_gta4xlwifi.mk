@@ -23,15 +23,18 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 $(call inherit-product, device/samsung/gta4xlwifi/device.mk)
 
 ## Inherit some common Lineage stuff
-$(call inherit-product-if-exists, device/samsung/gta4xlwifi/common.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-## Boot Animation
-TARGET_BOOTANIMATION_HALF_RES := true
-TARGET_SCREEN_HEIGHT := 2000
-TARGET_SCREEN_WIDTH := 1200
+## Custom Fonts
+$(call inherit-product-if-exists, device/samsung/gta4xlwifi/addons/config.mk)
 
 ## Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+## Boot Animation
+#TARGET_BOOTANIMATION_HALF_RES := true
+TARGET_SCREEN_HEIGHT := 2000
+TARGET_SCREEN_WIDTH := 1200
 
 ## Device identifier, this must come after all inclusions
 PRODUCT_DEVICE := gta4xlwifi
@@ -42,3 +45,19 @@ PRODUCT_MANUFACTURER := samsung
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
+
+RICE_CHIPSET := "Exynos 9611"
+
+# Face Unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
+WITH_GMS := true
+
+RICE_PACKAGE_TYPE := Gapps
+
+RICE_MAINTAINER := Nubianprince
+
+# Sushi Bootanimation
+SUSHI_BOOTANIMATION := 1080
+
+

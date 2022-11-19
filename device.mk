@@ -14,17 +14,36 @@
 # limitations under the License.
 #
 
-# Inherit from the common tree
-$(call inherit-product, device/samsung/gta4xl-common/common.mk)
-
 # Inherit proprietary files
 $(call inherit-product, vendor/samsung/gta4xlwifi/gta4xlwifi-vendor.mk)
 
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-# Include custom fonts
-$(call inherit-product-if-exists, device/samsung/gta4xlwifi/fonts.mk)
+PRODUCT_CHARACTERISTICS := tablet
 
+# Dynamic Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Soong Namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/samsung/aidl/power-libperfmgr
+    
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
+PRODUCT_ENFORCE_RRO_TARGETS += *
+
+# Turn on all adbd
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.service.adb.enable=1 \
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
+    
+    include $(PLATFORM_PATH)/platform/*.mk
