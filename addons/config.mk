@@ -1,6 +1,4 @@
-#
-# Copyright (C) 2018-2019 The Pixel3ROM Project
-# Copyright (C) 2021 Raphielscape LLC.
+# Copyright (C) 2017-2022 crDroid Android Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-
 LOCAL_PATH := $(call my-dir)
-
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
+
+# Fonts
+PRODUCT_PACKAGES += \
+	custom_fonts.xml \
+	FontAuthenticOverlay \
+	FontTwCenMtOverlay \
+	FontSulphurPointOverlay \
+	FontUrbanistOverlay \
+	FontNK57Overlay \
+	FontHarmoniaSansOverlay
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/samsung/gta4xlwifi/addons/prebuilt/product/fonts,$(TARGET_COPY_OUT_PRODUCT)/fonts) \
+    device/samsung/gta4xlwifi/addons/prebuilt/product/etc/custom_fonts.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml

@@ -1,2 +1,9 @@
 ## RIL
 ro.radio.noril=true
+
+# Adb
+persist.sys.usb.config=mtp,adb
+persist.service.adb.enable=1
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1

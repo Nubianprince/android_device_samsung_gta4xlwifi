@@ -23,8 +23,5 @@ $(call inherit-product, vendor/samsung/gta4xlwifi/gta4xlwifi-vendor.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-# Include custom fonts
-$(call inherit-product-if-exists, device/samsung/gta4xlwifi/fonts.mk)
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
